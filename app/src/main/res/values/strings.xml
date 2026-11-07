@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Unit Converter</string>
+    <string name="eyebrow">Everyday tools</string>
+    <string name="title">Unit converter</string>
+    <string name="subtitle">A little clarity for every measurement.</string>
+    <string name="category_label">Measurement type</string>
+    <string name="value_label">Value to convert</string>
+    <string name="value_hint">Enter a number</string>
+    <string name="units_label">Convert from / to</string>
+    <string name="arrow">→</string>
+    <string name="convert">Convert</string>
+    <string name="result_label">CONVERTED VALUE</string>
+    <string name="result_placeholder">—</string>
+    <string name="input_error">Please enter a valid number.</string>
+    <string name="input_error_short">Enter a number</string>
+    <string name="footer">Length · Weight · Volume</string>
+</resources>
