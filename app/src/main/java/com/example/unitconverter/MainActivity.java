@@ -1,8 +1,12 @@
 package com.example.unitconverter;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.graphics.Insets;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowInsets;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -58,6 +62,16 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if (Build.VERSION.SDK_INT >= 35) {
+            View root = findViewById(R.id.root_content);
+            root.setOnApplyWindowInsetsListener((view, insets) -> {
+                int safeInsets = WindowInsets.Type.systemBars() | WindowInsets.Type.displayCutout();
+                Insets padding = insets.getInsets(safeInsets);
+                view.setPadding(padding.left, padding.top, padding.right, padding.bottom);
+                return insets;
+            });
+        }
+
         categorySpinner = findViewById(R.id.category_spinner);
         fromSpinner = findViewById(R.id.from_spinner);
         toSpinner = findViewById(R.id.to_spinner);
@@ -65,6 +79,7 @@ public class MainActivity extends Activity {
         resultValue = findViewById(R.id.result_value);
         resultUnit = findViewById(R.id.result_unit);
         Button convertButton = findViewById(R.id.convert_button);
+        TextView privacyPolicyLink = findViewById(R.id.privacy_policy_link);
 
         ArrayAdapter<String> categoryAdapter = new ArrayAdapter<>(
                 this, android.R.layout.simple_spinner_item, CATEGORIES);
@@ -84,6 +99,11 @@ public class MainActivity extends Activity {
         });
 
         convertButton.setOnClickListener(view -> convertValue());
+        privacyPolicyLink.setOnClickListener(view -> new AlertDialog.Builder(this)
+                .setTitle(R.string.privacy_policy_title)
+                .setMessage(R.string.privacy_policy_content)
+                .setPositiveButton(android.R.string.ok, null)
+                .show());
         valueInput.setOnEditorActionListener((textView, actionId, event) -> {
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 convertValue();

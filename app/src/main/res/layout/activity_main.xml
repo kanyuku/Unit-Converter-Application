@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/screen_background"
@@ -196,12 +197,17 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/privacy_policy_link"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
-            android:text="@string/footer"
-            android:textColor="@color/muted_ink"
-            android:textSize="12sp" />
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="8dp"
+            android:text="@string/privacy_policy"
+            android:textColor="@color/accent"
+            android:textSize="14sp" />
     </LinearLayout>
 </ScrollView>

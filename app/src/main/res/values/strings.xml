@@ -14,5 +14,7 @@
     <string name="result_placeholder">—</string>
     <string name="input_error">Please enter a valid number.</string>
     <string name="input_error_short">Enter a number</string>
-    <string name="footer">Length · Weight · Volume</string>
+    <string name="privacy_policy">Privacy policy</string>
+    <string name="privacy_policy_title">Privacy policy</string>
+    <string name="privacy_policy_content">Unit Converter processes measurements entered by you on your device to calculate length, weight, and volume conversions.\n\nThis app does not collect, share, or transmit personal data. It does not use advertising, analytics, or third-party SDKs, and it does not request device permissions. Conversion values are not stored by the app.\n\nFor privacy questions, contact: [add your developer or business name and a monitored privacy email before publishing].</string>
 </resources>
