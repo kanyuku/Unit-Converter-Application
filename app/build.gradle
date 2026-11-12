@@ -19,19 +19,6 @@ def hasCompleteUploadSigningValues = [
         uploadKeyPassword
 ].every { it != null && !it.isBlank() }
 
-if (hasAnyUploadSigningValue && !hasCompleteUploadSigningValues) {
-    throw new GradleException("Upload signing is partially configured. Set all UNIT_CONVERTER_UPLOAD_* environment variables.")
-}
-
-if (gradle.startParameter.taskNames.any { it.toLowerCase(Locale.ROOT).contains("release") }
-        && !hasCompleteUploadSigningValues) {
-    throw new GradleException("Release signing is not configured. See docs/PLAY_STORE_RELEASE.md.")
-}
-
-if (hasCompleteUploadSigningValues && !file(uploadStoreFile).isFile()) {
-    throw new GradleException("The upload keystore file configured by UNIT_CONVERTER_UPLOAD_STORE_FILE does not exist.")
-}
-
 android {
     namespace "com.example.unitconverter"
     compileSdk 36
@@ -67,4 +54,17 @@ android {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
+}
+
+if (hasAnyUploadSigningValue && !hasCompleteUploadSigningValues) {
+    throw new GradleException("Upload signing is partially configured. Set all UNIT_CONVERTER_UPLOAD_* environment variables.")
+}
+
+if (gradle.startParameter.taskNames.any { it.toLowerCase(Locale.ROOT).contains("release") }
+        && !hasCompleteUploadSigningValues) {
+    throw new GradleException("Release signing is not configured. See docs/PLAY_STORE_RELEASE.md.")
+}
+
+if (hasCompleteUploadSigningValues && !file(uploadStoreFile).isFile()) {
+    throw new GradleException("The upload keystore file configured by UNIT_CONVERTER_UPLOAD_STORE_FILE does not exist.")
 }
